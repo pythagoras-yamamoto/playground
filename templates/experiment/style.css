@@ -1,0 +1,12 @@
+/* このファイルは作品ごとに完全に独立しています。
+   最低限のリセットのみ。ここから好きに組み立てる。 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: sans-serif;
+}

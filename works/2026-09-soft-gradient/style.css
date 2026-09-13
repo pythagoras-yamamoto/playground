@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f3efe9;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+}
+
+.blob-a {
+  width: 50vmax;
+  height: 50vmax;
+  background: #ffb3a7;
+  top: -15vmax;
+  left: -10vmax;
+  animation: drift-a 22s ease-in-out infinite alternate;
+}
+
+.blob-b {
+  width: 40vmax;
+  height: 40vmax;
+  background: #a7c7ff;
+  bottom: -20vmax;
+  right: -10vmax;
+  animation: drift-b 26s ease-in-out infinite alternate;
+}
+
+.blob-c {
+  width: 35vmax;
+  height: 35vmax;
+  background: #cdb7ff;
+  top: 30%;
+  left: 40%;
+  animation: drift-c 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  to { transform: translate(15vmax, 10vmax) scale(1.1); }
+}
+
+@keyframes drift-b {
+  to { transform: translate(-12vmax, -8vmax) scale(1.15); }
+}
+
+@keyframes drift-c {
+  to { transform: translate(-10vmax, 12vmax) scale(0.9); }
+}
+
+p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 3rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #4a4740;
+}

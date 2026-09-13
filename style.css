@@ -1,0 +1,244 @@
+/* ---------------------------------------------
+   quiet-portfolio — base styles
+   静けさを優先: 装飾なし・余白多め・システムフォントのみ
+--------------------------------------------- */
+
+:root {
+  --bg: #f7f5f1;
+  --ink: #2b2a27;
+  --ink-soft: #6b6862;
+  --line: #e1ddd4;
+  --accent: #7c7566;
+
+  --serif: "Iowan Old Style", "Hiragino Mincho ProN", "Noto Serif JP", Georgia, ui-serif, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+
+  --content-width: 640px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1b19;
+    --ink: #e8e5df;
+    --ink-soft: #a29d92;
+    --line: #333029;
+    --accent: #b3ab98;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+header.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+header.site-header .name {
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+nav.site-nav {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+
+nav.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-soft);
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  margin: 0 0 1.5rem;
+}
+
+a {
+  color: var(--ink);
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: var(--ink-soft);
+}
+
+.lede {
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+ul.plain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entries {
+  margin-top: 3rem;
+}
+
+.entry {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.entry:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.entry .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+.entry .desc {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin: 0.4rem 0 0;
+}
+
+footer.site-footer {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+footer.site-footer a {
+  color: var(--ink-soft);
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 3.5rem 1.25rem 4rem;
+  }
+}
+
+/* ---------------------------------------------
+   gallery — works.html
+   各作品は独立したCSSを持つため、ここでは
+   「並べ方」だけを定義し、中身のデザインには関与しない
+--------------------------------------------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 1.5rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 560px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+a.work {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.work .frame {
+  display: block;
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+a.work .frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border: 0;
+  transform: scale(0.5);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+a.work:hover .frame {
+  border-color: var(--ink-soft);
+}
+
+a.work .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0.6rem;
+  font-family: var(--sans);
+}
+
+a.work .work-title {
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+a.work .work-date {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
